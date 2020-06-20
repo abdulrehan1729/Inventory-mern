@@ -11,4 +11,4 @@ mongoose.connect(mongoURI, connectOptions, (err, db) => {
     console.log(`Connected to MongoDB`);
 });
 
-module.exports = mongoose.connect;
+module.exports = mongoose
