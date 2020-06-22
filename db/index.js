@@ -1,3 +1,4 @@
+require('dotenv').config()
 const mongoose = require("mongoose");
 const mongoURI = process.env.MONGODB_URI || "mongodb://localhost/inventory-mern";
 const connectOptions = {
