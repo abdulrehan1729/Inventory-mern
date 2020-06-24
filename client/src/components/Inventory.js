@@ -122,6 +122,19 @@ export default class Inventory extends Component {
                     alert(e.response.data.error);
                   });
               }),
+            onRowDelete: (oldData) =>
+              new Promise((resolve, reject) => {
+                resolve();
+
+                axios
+                  .delete("/items/remove", { data: oldData })
+                  .then((result) => {
+                    this.componentDidMount();
+                  })
+                  .catch((e) => {
+                    alert(e.response.data.error);
+                  });
+              }),
           }}
         />
       </div>

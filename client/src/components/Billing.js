@@ -65,7 +65,6 @@ export default class Billing extends Component {
   }
 
   placeOrder() {
-    // console.log(this.state.billing_data);
     axios
       .post("/items/quantity-update", this.state.billing_data)
       .then((res) => {
@@ -147,7 +146,7 @@ export default class Billing extends Component {
                 <Cell>{this.state.total_amount}</Cell>
               </Row>
             ) : (
-              <div></div>
+              <Row />
             )}
           </Body>
         </Table>

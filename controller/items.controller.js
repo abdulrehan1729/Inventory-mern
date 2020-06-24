@@ -87,4 +87,14 @@ module.exports = {
       );
     });
   },
+  removeItem(req, res) {
+    Items.remove({ _id: req.body._id }, function (err) {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ error: "Internal server erro" });
+      } else {
+        return res.json({ message: "Item is deleted successfully" });
+      }
+    });
+  },
 };

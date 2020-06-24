@@ -16,4 +16,6 @@ router.post("/items/quantity-update/", itemsController.updateItemQuantity);
 
 router.post("/items/update/:id", itemsController.updateItem);
 
+router.delete("/items/remove", itemsController.removeItem);
+
 module.exports = router;
