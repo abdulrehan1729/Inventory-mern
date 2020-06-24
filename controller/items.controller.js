@@ -40,6 +40,18 @@ module.exports = {
       return res.json(docs);
     });
   },
+  getAvailableItems(req, res) {
+    let query = Items.find({ quantity: { $gt: 0 } });
+    query.exec((err, data) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({
+          error: "Internal server error",
+        });
+      }
+      return res.json(data);
+    });
+  },
   updateItem(req, res) {
     console.log(req.params);
     Items.findByIdAndUpdate(
@@ -60,19 +72,19 @@ module.exports = {
   },
 
   updateItemQuantity(req, res) {
-    let changeInQuantity = req.body.quantity_sold;
-    Items.findOneAndUpdate(
-      { _id: req.params.id },
-      {
-        $inc: { quantity: -changeInQuantity },
-      },
-      (err, data) => {
-        if (err) {
-          console.log(err);
-          return res.status(500).json({ error: "Internal server error" });
+    req.body.map((item) => {
+      Items.findOneAndUpdate(
+        { _id: item._id },
+        {
+          $inc: { quantity: -item.quantity_sold },
+        },
+        (err, data) => {
+          if (err) {
+            console.log(err);
+            return res.status(500).json({ error: "Internal server error" });
+          }
         }
-        return res.json(data);
-      }
-    );
+      );
+    });
   },
 };

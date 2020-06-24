@@ -10,7 +10,9 @@ router.post("/items/add", itemsController.createItem);
 
 router.get("/items/get-all", itemsController.getItems);
 
-router.patch("/items/quantity-update/:id", itemsController.updateItemQuantity);
+router.get("/items/get-available-items", itemsController.getAvailableItems);
+
+router.post("/items/quantity-update/", itemsController.updateItemQuantity);
 
 router.post("/items/update/:id", itemsController.updateItem);
 
