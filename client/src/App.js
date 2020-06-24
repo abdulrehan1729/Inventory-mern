@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Navbar />
         <Route exact path="/" render={() => <Inventory />} />
-        <Route exact path="/billing" render={() => <Billing />} />
+        <Route path="/billing" render={() => <Billing />} />
       </Router>
     </div>
   );
